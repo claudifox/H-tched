@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import ItemCollection from './components/ItemCollection'
+
 import './App.css';
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
         <header className="App-header">
           H!tched
         </header>
+        <ItemCollection />
       </div>
     );
   }

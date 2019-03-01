@@ -1,0 +1,2 @@
+class CoupleRegistriesController < ApplicationController
+end

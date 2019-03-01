@@ -1,4 +1,6 @@
 import React from 'react'
+import ItemCard from "../components/ItemCard"
+// import { Card } from 'semantic-ui-react'
 
 export default class ItemCollection extends React.Component {
 
@@ -14,7 +16,10 @@ export default class ItemCollection extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="ui four column grid">
+        <div className="row">
+            {this.state.items.map(item => <ItemCard key={item.id} item={item} /> )}
+        </div>
       </div>
     )
   }

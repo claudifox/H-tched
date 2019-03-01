@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ItemCollection from './components/ItemCollection'
+import ItemCollection from './containers/ItemCollection'
 
 import './App.css';
 

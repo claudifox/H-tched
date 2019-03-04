@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline'
 import ItemCollectionNestedGrid from './containers/ItemCollectionNestedGrid'
 import PrimarySearchAppBar from './components/PrimarySearchAppBar'
-import SignIn from './components/SignIn'
+// import SignIn from './components/SignIn'
 
 import './App.css';
 

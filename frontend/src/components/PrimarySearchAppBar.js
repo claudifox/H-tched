@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -92,12 +93,16 @@ class PrimarySearchAppBar extends React.Component {
   };
 
   handleMenuClose = () => {
+    // debugger
     this.setState({ anchorEl: null });
     this.handleMobileMenuClose();
   };
 
   handleMobileMenuOpen = event => {
     this.setState({ mobileMoreAnchorEl: event.currentTarget });
+    // if (event.currentTarget.name === 'guest') {
+    //
+    // }
   };
 
   handleMobileMenuClose = () => {
@@ -116,7 +121,10 @@ class PrimarySearchAppBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Guest List</MenuItem>
+        <MenuItem onClick={() => {
+          this.handleMenuClose()
+          this.props.history.push("")
+        }}>Guest List</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>Wedding Registry</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>My Account</MenuItem>
       </Menu>
@@ -126,9 +134,6 @@ class PrimarySearchAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static" style={{ backgroundColor: '#B84C65' }}>
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-              <MenuIcon />
-            </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
               <img src={HtchedLogoDark}  style={{width: '200px'}}/>
             </Typography>

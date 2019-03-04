@@ -1,10 +1,13 @@
 import React from 'react'
 import CoupleSignIn from './CoupleSignIn'
 import CoupleSignUp from './CoupleSignUp'
+import GuestLogIn from './GuestLogIn'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import HtchedLogoLight from '../images/HtchedLogoLight.png'
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
   root: {
@@ -15,7 +18,7 @@ const styles = theme => ({
   },
   image: {
     position: 'relative',
-    height: 700,
+    height: 600,
     [theme.breakpoints.down('xs')]: {
       width: '100% !important', // Overrides inline-style
       height: 100,
@@ -76,7 +79,7 @@ const styles = theme => ({
     bottom: -2,
     left: 'calc(50% - 9px)',
     transition: theme.transitions.create('opacity'),
-  },
+  }
 });
 
 const images = [
@@ -84,16 +87,23 @@ const images = [
     url: 'https://www.roxanapansino.com/wp-content/uploads/2017/08/wedd.jpg',
     title: 'Log In',
     width: '30%',
+    link: "/LogIn",
+    component: {CoupleSignIn}
   },
   {
     url: 'http://www.sweetteaphotographybylisamarie.com/wp-content/uploads/2018/04/Momen-Pernikahan-1200x932.jpg',
     title: 'Sign Up',
     width: '40%',
+    link: "/SignUp",
+    component: {CoupleSignUp}
   },
   {
     url: 'https://media.brides.com/photos/58399c3a8465f01632f3b5a4/1:1/w_854/GettyImages-200166988-001.jpg',
     title: 'Find a Registry',
     width: '30%',
+    link: "/GuestLogIn",
+    component: {GuestLogIn}
+
   },
 ];
 
@@ -104,38 +114,40 @@ const Home = props => {
 
   return (
     <div>
-     <div className={classes.root}>
-       {images.map(image => (
-         <ButtonBase
-           focusRipple
-           key={image.title}
-           className={classes.image}
-           focusVisibleClassName={classes.focusVisible}
-           style={{
-             width: image.width,
-           }}
-         >
-           <span
-             className={classes.imageSrc}
+      <img src={HtchedLogoLight} style={{height: 200}} />
+       <div className={classes.root}>
+         {images.map(image => (
+           <ButtonBase
+             component={Link} to={image.link}
+             focusRipple
+             key={image.title}
+             className={classes.image}
+             focusVisibleClassName={classes.focusVisible}
              style={{
-               backgroundImage: `url(${image.url})`,
+               width: image.width,
              }}
-           />
-           <span className={classes.imageBackdrop} />
-           <span className={classes.imageButton}>
-             <Typography
-               component="span"
-               variant="subtitle1"
-               color="inherit"
-               className={classes.imageTitle}
-             >
-               {image.title}
-               <span className={classes.imageMarked} />
-             </Typography>
-           </span>
-         </ButtonBase>
-       ))}
-     </div>
+           >
+             <span
+               className={classes.imageSrc}
+               style={{
+                 backgroundImage: `url(${image.url})`,
+               }}
+             />
+             <span className={classes.imageBackdrop} />
+             <span className={classes.imageButton}>
+               <Typography
+                 component="span"
+                 variant="subtitle1"
+                 color="inherit"
+                 className={classes.imageTitle}
+               >
+                 {image.title}
+                 <span className={classes.imageMarked} />
+               </Typography>
+             </span>
+           </ButtonBase>
+         ))}
+       </div>
     </div>
  );
 }

@@ -14,6 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import HtchedLogoDark from '../images/HtchedLogoDark.png'
 
 const styles = theme => ({
   root: {
@@ -115,20 +116,21 @@ class PrimarySearchAppBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>Guest List</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>Wedding Registry</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>My Account</MenuItem>
       </Menu>
     );
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" style={{ backgroundColor: '#B84C65' }}>
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              H!tched
+              <img src={HtchedLogoDark}  style={{width: '200px'}}/>
             </Typography>
             <div className={classes.grow} />
             <div className={classes.search}>

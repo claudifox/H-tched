@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline'
 import PrimarySearchAppBar from './components/PrimarySearchAppBar'
-// import { Switch, Route, withRouter } from 'react-router-dom'
 import {
   BrowserRouter as Router,
   Route,
@@ -15,7 +14,6 @@ import GuestTable from './components/GuestTable'
 import CoupleSignIn from './components/CoupleSignIn'
 import Home from './components/Home'
 
-// import CoupleSignIn from './components/CoupleSignIn'
 
 import './App.css';
 

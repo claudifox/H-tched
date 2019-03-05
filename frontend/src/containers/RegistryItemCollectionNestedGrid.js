@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import PrimarySearchAppBar from '../components/PrimarySearchAppBar'
+
 
 const styles = theme => ({
   root: {
@@ -21,6 +23,7 @@ function RegistryItemCollectionNestedGrid(props) {
 
   return (
     <div className={classes.root}>
+    <PrimarySearchAppBar />
       <Grid container spacing={8}>
         <Grid container item xs={12} spacing={24}>
           <ItemCollectionRow items={items} classes={classes} />

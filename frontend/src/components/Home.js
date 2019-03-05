@@ -18,7 +18,7 @@ const styles = theme => ({
   },
   image: {
     position: 'relative',
-    height: 600,
+    height: 640,
     [theme.breakpoints.down('xs')]: {
       width: '100% !important', // Overrides inline-style
       height: 100,
@@ -79,6 +79,10 @@ const styles = theme => ({
     bottom: -2,
     left: 'calc(50% - 9px)',
     transition: theme.transitions.create('opacity'),
+  },
+  logo: {
+    position: 'absolute',
+    left: '120px'
   }
 });
 
@@ -87,21 +91,21 @@ const images = [
     url: 'https://www.roxanapansino.com/wp-content/uploads/2017/08/wedd.jpg',
     title: 'Log In',
     width: '30%',
-    link: "/LogIn",
+    link: "/log-in",
     component: {CoupleSignIn}
   },
   {
     url: 'http://www.sweetteaphotographybylisamarie.com/wp-content/uploads/2018/04/Momen-Pernikahan-1200x932.jpg',
     title: 'Sign Up',
     width: '40%',
-    link: "/SignUp",
+    link: "/sign-up",
     component: {CoupleSignUp}
   },
   {
     url: 'https://media.brides.com/photos/58399c3a8465f01632f3b5a4/1:1/w_854/GettyImages-200166988-001.jpg',
     title: 'Find a Registry',
     width: '30%',
-    link: "/GuestLogIn",
+    link: "/guest-log-in",
     component: {GuestLogIn}
 
   },
@@ -114,7 +118,9 @@ const Home = props => {
 
   return (
     <div>
-      <img src={HtchedLogoLight} style={{height: 200}} />
+      <header className="logo">
+        <img src={HtchedLogoLight} style={{height: 150, display: 'flex', justifyContent: 'center' }} />
+      </header>
        <div className={classes.root}>
          {images.map(image => (
            <ButtonBase
@@ -127,6 +133,8 @@ const Home = props => {
                width: image.width,
              }}
            >
+           // // QUESTION: Do I need a Route here as well as a link
+           //  <Link to={image.link}></Link>
              <span
                className={classes.imageSrc}
                style={{

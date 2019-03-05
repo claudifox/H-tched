@@ -12,6 +12,8 @@ import ItemCollectionNestedGrid from './containers/ItemCollectionNestedGrid'
 import RegistryItemCollectionNestedGrid from './containers/RegistryItemCollectionNestedGrid'
 import GuestTable from './components/GuestTable'
 import CoupleSignIn from './components/CoupleSignIn'
+import CoupleSignUp from './components/CoupleSignUp'
+import GuestLogIn from './components/GuestLogIn'
 import Home from './components/Home'
 
 
@@ -36,13 +38,14 @@ class App extends Component {
     <Router>
       <React.Fragment>
         <CssBaseline />
-        <PrimarySearchAppBar />
         <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/items" render={(props) => <ItemCollectionNestedGrid {...props}/>}/>
-          <Route path="/guests" render={(props) => <GuestTable {...props} />}/>
-          <Route path="/registry" render={(props) => <RegistryItemCollectionNestedGrid {...props}/>}/>
-          <Route path="/login" component={CoupleSignIn}/>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.state.items} {...props}/>}/>
+          <Route exact path="/guests" render={(props) => <GuestTable {...props} />}/>
+          <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid {...props}/>}/>
+          <Route exact path="/log-in" component={CoupleSignIn}/>
+          <Route exact path="/sign-up" component={CoupleSignUp}/>
+          <Route exact path="/guest-log-in" component={GuestLogIn}/>
         </Switch>
       </React.Fragment>
     </Router>

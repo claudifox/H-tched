@@ -63,7 +63,7 @@ class ItemCard extends React.Component {
     const { classes } = this.props;
 
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card} key={this.props.item.id}>
         <CardHeader
           title={this.props.item.title}
           subheader={this.props.item.category}

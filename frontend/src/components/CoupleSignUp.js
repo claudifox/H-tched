@@ -43,6 +43,7 @@ const styles = theme => ({
   },
   submit: {
     marginTop: theme.spacing.unit * 3,
+    backgroundColor:'#B84C65'
   },
 });
 
@@ -52,7 +53,7 @@ class CoupleSignUp extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className='home-next-background'>
       <HomeLogInAppBar />
         <main className={classes.main}>
           <CssBaseline />
@@ -89,7 +90,6 @@ class CoupleSignUp extends React.Component {
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
             className={classes.submit}
           >
             Sign in

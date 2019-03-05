@@ -43,3 +43,11 @@ body {
 /* .text-wrap {
 	word-wrap: break-word;
 } */
+
+.home-next-background {
+  background-image: url('./images/Flowers.jpeg');
+  background-size: cover;
+  background-position: center top 200px;
+  height: 100%;
+
+}

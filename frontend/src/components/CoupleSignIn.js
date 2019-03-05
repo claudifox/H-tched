@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import HomeLogInAppBar from './HomeLogInAppBar'
+import Flowers from '../images/Flowers.jpeg'
 
 const styles = theme => ({
   main: {
@@ -52,7 +53,7 @@ class CoupleSignIn extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className='home-next-background'>
         <HomeLogInAppBar />
         <main className={classes.main}>
           <CssBaseline />

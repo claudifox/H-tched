@@ -9,7 +9,10 @@ import HtchedLogoLight from '../images/HtchedLogoLight.png'
 
 const styles = {
   root: {
-    flexGrow: 1,
+    width: '100%',
+  },
+  grow: {
+    flexGrow: 0.5,
   },
 };
 
@@ -18,9 +21,10 @@ function HomeLogInAppBar(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="white">
         <Toolbar>
-        <img src={HtchedLogoLight} style={{height: 150 }} />
+        <div className={classes.grow} />
+        <img src={HtchedLogoLight} style={{height: 105 }} />
         </Toolbar>
       </AppBar>
     </div>

@@ -8,6 +8,8 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 import HtchedLogoLight from '../images/HtchedLogoLight.png'
 import { Link } from 'react-router-dom'
+import HomeLogInAppBar from './HomeLogInAppBar'
+
 
 const styles = theme => ({
   root: {
@@ -88,18 +90,18 @@ const styles = theme => ({
 
 const images = [
   {
-    url: 'https://www.roxanapansino.com/wp-content/uploads/2017/08/wedd.jpg',
-    title: 'Log In',
-    width: '50%',
-    link: "/log-in",
-    component: {CoupleSignIn}
-  },
-  {
     url: 'http://www.sweetteaphotographybylisamarie.com/wp-content/uploads/2018/04/Momen-Pernikahan-1200x932.jpg',
     title: 'Sign Up',
     width: '50%',
     link: "/sign-up",
     component: {CoupleSignUp}
+  },
+  {
+    url: 'https://www.roxanapansino.com/wp-content/uploads/2017/08/wedd.jpg',
+    title: 'Log In',
+    width: '50%',
+    link: "/log-in",
+    component: {CoupleSignIn}
   },
   // {
   //   url: 'https://media.brides.com/photos/58399c3a8465f01632f3b5a4/1:1/w_854/GettyImages-200166988-001.jpg',
@@ -118,9 +120,7 @@ const Home = props => {
 
   return (
     <div>
-      <header className="logo">
-        <img src={HtchedLogoLight} style={{height: 150, display: 'flex', justifyContent: 'center' }} />
-      </header>
+      <HomeLogInAppBar />
        <div className={classes.root}>
          {images.map(image => (
            <ButtonBase

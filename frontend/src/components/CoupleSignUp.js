@@ -59,43 +59,44 @@ class CoupleSignUp extends React.Component {
           <CssBaseline />
           <Paper className={classes.paper}>
           <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign Up
-        </Typography>
-        <form className={classes.form}>
-          <FormControl margin="normal" required halfWidth>
-          <InputLabel htmlFor="name1">Your Name</InputLabel>
-          <Input id="name1" name="name1" autoComplete="name1" autoFocus />
-          </FormControl>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign Up
+            </Typography>
+            <form className={classes.form}>
+              <FormControl margin="normal" required halfWidth>
+              <InputLabel htmlFor="name1">Your Name</InputLabel>
+              <Input id="name1" name="name1" autoComplete="name1" autoFocus />
+              </FormControl>
 
-          <FormControl margin="normal" required halfWidth>
-          <InputLabel htmlFor="name2">Your Fiancé's Name</InputLabel>
-          <Input id="name2" name="name2" autoComplete="name2"  />
-          </FormControl>
-          <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Couple Email Address</InputLabel>
-            <Input id="email" name="email" autoComplete="email" />
-          </FormControl>
-          <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="password">Password</InputLabel>
-            <Input name="password" type="password" id="password" autoComplete="current-password" />
-          </FormControl>
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            className={classes.submit}
-          >
-            Sign in
-          </Button>
-        </form>
+              <FormControl margin="normal" required halfWidth>
+              <InputLabel htmlFor="name2">Your Fiancé's Name</InputLabel>
+              <Input id="name2" name="name2" autoComplete="name2"  />
+              </FormControl>
+              <FormControl margin="normal" required fullWidth>
+                <InputLabel htmlFor="email">Couple Email Address</InputLabel>
+                <Input id="email" name="email" autoComplete="email" />
+              </FormControl>
+              <FormControl margin="normal" required fullWidth>
+                <InputLabel htmlFor="password">Password</InputLabel>
+                <Input name="password" type="password" id="password" autoComplete="current-password" />
+              </FormControl>
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                className={classes.submit}
+              >
+                Sign Up
+              </Button>
+            </form>
           </Paper>
+          <div  style={{height: 50 }}/>
         </main>
       </div>
     )

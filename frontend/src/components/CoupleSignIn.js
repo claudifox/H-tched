@@ -65,7 +65,7 @@ class CoupleSignIn extends React.Component {
         <Typography component="h1" variant="h5">
           Log In
         </Typography>
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={this.props.handleLogInSubmit}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">Email Address</InputLabel>
             <Input id="email" name="email" autoComplete="email" autoFocus />
@@ -85,10 +85,11 @@ class CoupleSignIn extends React.Component {
             color="primary"
             className={classes.submit}
           >
-            Sign in
+            Log In
           </Button>
           </form>
           </Paper>
+          <div  style={{height: 80 }}/>
         </main>
       </div>
     )

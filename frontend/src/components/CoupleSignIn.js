@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
@@ -11,7 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import HtchedLogoLight from '../images/HtchedLogoLight.png'
+import HomeLogInAppBar from './HomeLogInAppBar'
 
 const styles = theme => ({
   main: {
@@ -45,18 +46,22 @@ const styles = theme => ({
   },
 });
 
-const CoupleSignIn = props => {
-  const { classes } = props;
 
-  return (
-    <main className={classes.main}>
-      <CssBaseline />
-      <Paper className={classes.paper}>
-        <div className='logo'>
-          <HtchedLogoLight />
-        </div>
+class CoupleSignIn extends React.Component {
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div>
+        <HomeLogInAppBar />
+        <main className={classes.main}>
+          <CssBaseline />
+          <Paper className={classes.paper}>
+          <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Log in
         </Typography>
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>
@@ -80,14 +85,14 @@ const CoupleSignIn = props => {
           >
             Sign in
           </Button>
-        </form>
-      </Paper>
-    </main>
-  );
+          </form>
+          </Paper>
+        </main>
+      </div>
+    )
+  }
 }
 
-CoupleSignIn.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+
 
 export default withStyles(styles)(CoupleSignIn);

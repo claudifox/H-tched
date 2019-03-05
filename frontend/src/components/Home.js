@@ -133,8 +133,6 @@ const Home = props => {
                width: image.width,
              }}
            >
-           // // QUESTION: Do I need a Route here as well as a link
-           //  <Link to={image.link}></Link>
              <span
                className={classes.imageSrc}
                style={{

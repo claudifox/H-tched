@@ -36,7 +36,7 @@ const styles = theme => ({
   },
   avatar: {
     margin: theme.spacing.unit,
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: '#B84C65',
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -44,6 +44,7 @@ const styles = theme => ({
   },
   submit: {
     marginTop: theme.spacing.unit * 3,
+    backgroundColor:'#B84C65'
   },
 });
 
@@ -62,7 +63,7 @@ class CoupleSignIn extends React.Component {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Log in
+          Log In
         </Typography>
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>

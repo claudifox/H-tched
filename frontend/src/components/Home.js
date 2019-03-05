@@ -90,25 +90,25 @@ const images = [
   {
     url: 'https://www.roxanapansino.com/wp-content/uploads/2017/08/wedd.jpg',
     title: 'Log In',
-    width: '30%',
+    width: '50%',
     link: "/log-in",
     component: {CoupleSignIn}
   },
   {
     url: 'http://www.sweetteaphotographybylisamarie.com/wp-content/uploads/2018/04/Momen-Pernikahan-1200x932.jpg',
     title: 'Sign Up',
-    width: '40%',
+    width: '50%',
     link: "/sign-up",
     component: {CoupleSignUp}
   },
-  {
-    url: 'https://media.brides.com/photos/58399c3a8465f01632f3b5a4/1:1/w_854/GettyImages-200166988-001.jpg',
-    title: 'Find a Registry',
-    width: '30%',
-    link: "/guest-log-in",
-    component: {GuestLogIn}
-
-  },
+  // {
+  //   url: 'https://media.brides.com/photos/58399c3a8465f01632f3b5a4/1:1/w_854/GettyImages-200166988-001.jpg',
+  //   title: 'Find a Registry',
+  //   width: '30%',
+  //   link: "/guest-log-in",
+  //   component: {GuestLogIn}
+  //
+  // },
 ];
 
 

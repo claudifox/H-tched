@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom'
 import ItemCollectionNestedGrid from './containers/ItemCollectionNestedGrid'
 import RegistryItemCollectionNestedGrid from './containers/RegistryItemCollectionNestedGrid'
-import GuestTable from './components/GuestTable'
+import GuestList from './containers/GuestList'
 import CoupleSignIn from './components/CoupleSignIn'
 import CoupleSignUp from './components/CoupleSignUp'
 import GuestLogIn from './components/GuestLogIn'
@@ -22,6 +22,7 @@ import './App.css';
 class App extends Component {
 
   state = {
+    currentUser: "",
     items: [],
     guests: [],
     registryItems: [],
@@ -33,6 +34,11 @@ class App extends Component {
       .then(items => this.setState({items: items}))
   }
 
+  handleLogInSubmit = event => {
+    event.preventDefault()
+    debugger
+  }
+
   render() {
     return (
     <Router>
@@ -41,11 +47,10 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.state.items} {...props}/>}/>
-          <Route exact path="/guests" render={(props) => <GuestTable {...props} />}/>
+          <Route exact path="/guests" render={(props) => <GuestList {...props} />}/>
           <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid {...props}/>}/>
-          <Route exact path="/log-in" component={CoupleSignIn}/>
+          <Route exact path="/log-in" render={(props) => <CoupleSignIn handleLogInSubmit={this.handleLogInSubmit} {...props}/>}/>
           <Route exact path="/sign-up" component={CoupleSignUp}/>
-          <Route exact path="/guest-log-in" component={GuestLogIn}/>
         </Switch>
       </React.Fragment>
     </Router>

@@ -20,21 +20,23 @@ import './App.css';
 
 class App extends Component {
 
-  constructor(props){
-   super(props)
-     this.state = {
-       items: [],
-       searchTerm: "",
-       categories: [],
-       selectedCategories: []
-     }
+  // constructor(props){
+  //  super(props)
+  //    this.state = {
+  //      items: [],
+  //      searchTerm: "",
+  //      categories: [],
+  //      selectedCategories: []
+  //    }
 
   state = {
     currentUser: "",
     items: [],
     guests: [],
     registryItems: [],
-
+    searchTerm: "",
+    categories: [],
+    selectedCategories: []
   }
 
   componentDidMount() {
@@ -67,13 +69,6 @@ class App extends Component {
   }
 
   handleCategoryClick = category => {
-    // debugger
-    // category = event.target.name
-    // console.log(category)
-    // let allButtons = this.state.categories.map(category => category.label)
-    // if (allButtons.includes(event.target.name)) {
-    //   this.toggleButtonFilter()
-    // }
     this.state.selectedCategories.includes(category) ? this.deSelectCategory(category) : this.selectCategory(category)
   }
 
@@ -94,30 +89,23 @@ class App extends Component {
 
   render() {
     return (
-
-    <React.Fragment>
-      <CssBaseline />
-        <PrimarySearchAppBar onSearchChange={this.onSearchChange}/>
-        <div>
-          <CategorySelectorChips handleClick={this.handleCategoryClick} passCategories={this.state.categories} items={this.state.items}/>
-        </div>
       <div>
-      <ItemCollectionNestedGrid items={this.filteredItems()} categoriesToShow={this.state.selectedCategories} spacing="2x-large" />
-      </div>
-    </React.Fragment>
-    <Router>
-      <React.Fragment>
-        <CssBaseline />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.state.items} {...props}/>}/>
-          <Route exact path="/guests" render={(props) => <GuestList {...props} />}/>
-          <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid {...props}/>}/>
-          <Route exact path="/log-in" render={(props) => <CoupleSignIn handleLogInSubmit={this.handleLogInSubmit} {...props}/>}/>
-          <Route exact path="/sign-up" component={CoupleSignUp}/>
-        </Switch>
-      </React.Fragment>
-    </Router>
+        <React.Fragment>
+          <CssBaseline />
+        </React.Fragment>
+        <Router>
+          <React.Fragment>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.filteredItems()} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} {...props}/>}/>
+              <Route exact path="/guests" render={(props) => <GuestList {...props} />}/>
+              <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid {...props}/>}/>
+              <Route exact path="/log-in" render={(props) => <CoupleSignIn handleLogInSubmit={this.handleLogInSubmit} {...props}/>}/>
+              <Route exact path="/sign-up" component={CoupleSignUp}/>
+            </Switch>
+          </React.Fragment>
+        </Router>
+    </div>
   );
   }
 }

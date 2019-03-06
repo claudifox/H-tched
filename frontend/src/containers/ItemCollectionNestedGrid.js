@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import PrimarySearchAppBar from '../components/PrimarySearchAppBar'
+import CategorySelectorChips from './CategorySelectorChips'
 
 const styles = theme => ({
   root: {
@@ -18,20 +19,18 @@ const styles = theme => ({
 });
 
 function ItemCollectionNestedGrid(props) {
-  const { classes, items, categoriesToShow } = props;
+  const { classes, items, categoriesToShow, handleClick, passCategories, onSearchChange } = props;
 
   return (
     <div className={classes.root}>
-      <PrimarySearchAppBar />
+      <PrimarySearchAppBar onSearchChange={onSearchChange}/>
+      <CategorySelectorChips handleClick={handleClick} passCategories={passCategories} items={items}/>
+      <br />
       <Grid container spacing={16}>
         <Grid container item xs={12} spacing={16}>
           <ItemCollectionRow items={items} classes={classes} categoriesToShow={categoriesToShow} />
-          <br />
-          <Grid container spacing={8}>
-            <Grid container item xs={12} spacing={24}>
-              <ItemCollectionRow items={items} classes={classes} />
-            </Grid>
-          </Grid>
+        </ Grid>
+      </ Grid>
     </div>
   );
 }

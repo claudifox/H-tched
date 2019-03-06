@@ -84,7 +84,7 @@ const styles = theme => ({
 });
 
 
-class PrimarySearchAppBar extends React.Component {
+class GuestListAppBar extends React.Component {
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
@@ -112,8 +112,8 @@ class PrimarySearchAppBar extends React.Component {
         onClose={this.handleMenuClose}
       >
         <MenuItem
-          component={Link} to="/guests"
-          onClick={() => {this.handleMenuClose()}}>Guest List</MenuItem>
+          component={Link} to="/items"
+          onClick={() => {this.handleMenuClose()}}>Items</MenuItem>
 
         <MenuItem
           component={Link} to="/registry"
@@ -133,21 +133,6 @@ class PrimarySearchAppBar extends React.Component {
               </Link>
             </Typography>
             <div className={classes.grow} />
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search Gifts…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                onChange={this.props.onSearchChange}
-                showNoResults={false}
-                value={this.props.searchTerm}
-              />
-            </div>
             <div className={classes.sectionDesktop}>
               <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
@@ -166,8 +151,8 @@ class PrimarySearchAppBar extends React.Component {
   }
 }
 
-PrimarySearchAppBar.propTypes = {
+GuestListAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PrimarySearchAppBar);
+export default withStyles(styles)(GuestListAppBar);

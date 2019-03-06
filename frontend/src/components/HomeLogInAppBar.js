@@ -5,6 +5,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import HtchedLogoLight from '../images/HtchedLogoLight.png'
+import Home from './Home'
+import { Link } from 'react-router-dom'
+
+
 
 
 const styles = {
@@ -24,7 +28,9 @@ function HomeLogInAppBar(props) {
       <AppBar position="static" color="white">
         <Toolbar>
         <div className={classes.grow} />
-        <img src={HtchedLogoLight} style={{height: 105 }} />
+        <Link onClick to={Home}>
+          <img src={HtchedLogoLight} style={{height: 105 }} />
+        </Link>
         </Toolbar>
       </AppBar>
     </div>

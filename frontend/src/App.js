@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline'
-import ItemCollectionNestedGrid from './containers/ItemCollectionNestedGrid'
 import PrimarySearchAppBar from './components/PrimarySearchAppBar'
 import CategorySelectorChips from './containers/CategorySelectorChips'
-// import _ from 'lodash'
-// import SignIn from './components/SignIn'
-
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom'
+import ItemCollectionNestedGrid from './containers/ItemCollectionNestedGrid'
+import RegistryItemCollectionNestedGrid from './containers/RegistryItemCollectionNestedGrid'
+import GuestTable from './components/GuestTable'
+import CoupleSignIn from './components/CoupleSignIn'
+import CoupleSignUp from './components/CoupleSignUp'
+import GuestLogIn from './components/GuestLogIn'
+import Home from './components/Home'
 import './App.css';
 
 class App extends Component {
@@ -18,6 +28,12 @@ class App extends Component {
        categories: [],
        selectedCategories: []
      }
+
+  state = {
+    items: [],
+    guests: [],
+    registryItems: [],
+
   }
 
   componentDidMount() {
@@ -72,6 +88,7 @@ class App extends Component {
 
   render() {
     return (
+
     <React.Fragment>
       <CssBaseline />
         <PrimarySearchAppBar onSearchChange={this.onSearchChange}/>
@@ -82,6 +99,20 @@ class App extends Component {
       <ItemCollectionNestedGrid items={this.filteredItems()} categoriesToShow={this.state.selectedCategories} spacing="2x-large" />
       </div>
     </React.Fragment>
+    <Router>
+      <React.Fragment>
+        <CssBaseline />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.state.items} {...props}/>}/>
+          <Route exact path="/guests" render={(props) => <GuestTable {...props} />}/>
+          <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid {...props}/>}/>
+          <Route exact path="/log-in" component={CoupleSignIn}/>
+          <Route exact path="/sign-up" component={CoupleSignUp}/>
+          <Route exact path="/guest-log-in" component={GuestLogIn}/>
+        </Switch>
+      </React.Fragment>
+    </Router>
   );
   }
 }

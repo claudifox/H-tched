@@ -15,11 +15,10 @@ ActiveRecord::Schema.define(version: 2019_03_01_160910) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "couple_registries", force: :cascade do |t|
-    t.string "name_of_list"
+  create_table "couples", force: :cascade do |t|
+    t.string "name_1"
+    t.string "name_2"
     t.string "email_address"
-    t.date "date_of_wedding"
-    t.boolean "published"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,6 +26,8 @@ ActiveRecord::Schema.define(version: 2019_03_01_160910) do
 
   create_table "guests", force: :cascade do |t|
     t.string "email_address"
+    t.string "first_name"
+    t.string "last_name"
     t.integer "couple_registry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -42,10 +43,9 @@ ActiveRecord::Schema.define(version: 2019_03_01_160910) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "registry_items", force: :cascade do |t|
-    t.integer "couple_registry_id"
+  create_table "registries", force: :cascade do |t|
+    t.integer "couple_id"
     t.integer "item_id"
-    t.integer "guest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

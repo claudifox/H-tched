@@ -23,7 +23,11 @@ const styles = theme => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%',
+    width: '150px',
+    marginLeft: 'auto',
+    marginRight: 'auto'
+     // 16:9
   },
   actions: {
     display: 'flex',
@@ -59,7 +63,7 @@ class ItemCard extends React.Component {
     const { classes } = this.props;
 
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card} key={this.props.item.id}>
         <CardHeader
           title={this.props.item.title}
           subheader={this.props.item.category}
@@ -71,6 +75,7 @@ class ItemCard extends React.Component {
         />
         <CardContent>
           <Typography component="p">
+            £{this.props.item.price}
 
           </Typography>
         </CardContent>

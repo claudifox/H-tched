@@ -44,7 +44,7 @@ class ChipsArray extends React.Component {
           return (
             // <CategorySingleChip />
             <button
-              style={{height:"50px", width:"75px", backgroundColor: selectedCategories.includes(data.label) ? "#B84C65" : "#FCC0C5"}}
+              style={{height:"50px", width:"75px", borderRadius: "20px", backgroundColor: selectedCategories.includes(data.label) ? "#B84C65" : "#FCC0C5"}}
               key={data.key}
               icon={icon}
               className={classes.chip}

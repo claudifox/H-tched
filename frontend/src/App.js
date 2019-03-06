@@ -78,13 +78,12 @@ class App extends Component {
   }
 
   selectCategory = category => {
-    this.setState({ selectedCategories: [...this.state.selectedCategories, category]})
+   this.setState({ selectedCategories: [...this.state.selectedCategories, category]})
   }
 
-
   deSelectCategory = category => {
-    const updatedCategories = this.state.selectCategories.filter((selectCategory) => selectCategory !== category)
-    this.setState({selectCategories: updatedCategories})
+     const updatedCategories = this.state.selectedCategories.filter((selectedCategory) => selectedCategory  !== category)
+     this.setState({ selectedCategories: updatedCategories })
   }
 
   render() {

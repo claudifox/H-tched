@@ -16,14 +16,14 @@ const styles = theme => ({
   },
 });
 
-function ItemCollectionRow(props) {
-  const { classes, items } = props;
-
+const ItemCollectionRow = (props) => {
+  const { classes, items, categoriesToShow } = props;
+  const categoryItems = categoriesToShow.length ? items.filter((item) => props.categoriesToShow.includes(item.category)) : items
 // Have a look into doing the Grid item responsive, on half a big screen have it set at 4, otherwise full screen have as 2
   return (
     <React.Fragment>
-      {items.map(
-        item =>
+      {categoryItems.map(
+        (item) =>
           <Grid item xs={4}>
             <Paper className={classes.paper}><ItemCard key={item.id} item={item} />
             </Paper>

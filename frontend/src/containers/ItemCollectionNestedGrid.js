@@ -18,17 +18,20 @@ const styles = theme => ({
 });
 
 function ItemCollectionNestedGrid(props) {
-  const { classes, items } = props;
+  const { classes, items, categoriesToShow } = props;
 
   return (
     <div className={classes.root}>
       <PrimarySearchAppBar />
-      <br />
-      <Grid container spacing={8}>
-        <Grid container item xs={12} spacing={24}>
-          <ItemCollectionRow items={items} classes={classes} />
-        </Grid>
-      </Grid>
+      <Grid container spacing={16}>
+        <Grid container item xs={12} spacing={16}>
+          <ItemCollectionRow items={items} classes={classes} categoriesToShow={categoriesToShow} />
+          <br />
+          <Grid container spacing={8}>
+            <Grid container item xs={12} spacing={24}>
+              <ItemCollectionRow items={items} classes={classes} />
+            </Grid>
+          </Grid>
     </div>
   );
 }

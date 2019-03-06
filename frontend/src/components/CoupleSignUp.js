@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import HomeLogInAppBar from './HomeLogInAppBar'
+import API from '../API.js'
 
 const styles = theme => ({
   main: {
@@ -50,8 +51,36 @@ const styles = theme => ({
 
 class CoupleSignUp extends React.Component {
 
+  state = {
+    name_1: "",
+    name_2: "",
+    email_address: "",
+    password: ""
+  }
+
+  handleChange = event => {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
+  handleSignUpSubmit = event => {
+    event.preventDefault()
+    const { logIn, history } = this.props
+    const couple = this.state
+    API.create(couple).then(data => {
+      if (data.error) {
+        alert('Email address already in use')
+      } else {
+        logIn(data)
+        history.push("/")
+      }
+    })
+  }
+
   render() {
     const { classes } = this.props;
+    const { name_1, name_2, email_address, password } = this.state
+    const {handleSignUpSubmit, handleChange} = this
+
     return (
       <div className='home-next-background'>
       <HomeLogInAppBar />
@@ -64,23 +93,23 @@ class CoupleSignUp extends React.Component {
             <Typography component="h1" variant="h5">
               Sign Up
             </Typography>
-            <form className={classes.form}>
+            <form className={classes.form} onSubmit={handleSignUpSubmit}>
               <FormControl margin="normal" required halfWidth>
-              <InputLabel htmlFor="name1">Your Name</InputLabel>
-              <Input id="name1" name="name1" autoComplete="name1" autoFocus />
+              <InputLabel htmlFor="name_1">Your Name</InputLabel>
+              <Input id="name_1" name="name_1" autoComplete="name_1" value={name_1} onChange={handleChange} autoFocus />
               </FormControl>
 
               <FormControl margin="normal" required halfWidth>
-              <InputLabel htmlFor="name2">Your Fiancé's Name</InputLabel>
-              <Input id="name2" name="name2" autoComplete="name2"  />
+              <InputLabel htmlFor="name_2">Your Fiancé's Name</InputLabel>
+              <Input id="name_2" name="name_2" autoComplete="name_2" value={name_2} onChange={handleChange}  />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="email">Couple Email Address</InputLabel>
-                <Input id="email" name="email" autoComplete="email" />
+                <InputLabel htmlFor="email_address">Couple Email Address</InputLabel>
+                <Input id="email_address" name="email_address" autoComplete="email_address" value={email_address} onChange={handleChange} />
               </FormControl>
               <FormControl margin="normal" required fullWidth>
                 <InputLabel htmlFor="password">Password</InputLabel>
-                <Input name="password" type="password" id="password" autoComplete="current-password" />
+                <Input name="password" type="password" id="password" autoComplete="current-password" value={password} onChange={handleChange} />
               </FormControl>
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}

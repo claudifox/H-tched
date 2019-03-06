@@ -19,14 +19,14 @@ const styles = theme => ({
 });
 
 function RegistryItemCollectionNestedGrid(props) {
-  const { classes, registryItems } = props;
+  const { classes, registryItems, onSearchChange, logOut, currentCouple } = props;
 
   return (
     <div className={classes.root}>
-    <PrimarySearchAppBar />
+    <PrimarySearchAppBar onSearchChange={onSearchChange} logOut={logOut} currentCouple={currentCouple}/>
       <Grid container spacing={8}>
         <Grid container item xs={12} spacing={24}>
-          <RegistryItemCollectionRow registryItems={registryItems} classes={classes} />
+          <RegistryItemCollectionRow registryItems={registryItems} classes={classes}  />
         </Grid>
       </Grid>
     </div>

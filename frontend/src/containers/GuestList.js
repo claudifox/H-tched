@@ -6,9 +6,10 @@ import GuestTable from '../components/GuestTable'
 export default class GuestList extends React.Component {
 
   render() {
+    const { logOut, currentCouple } = this.props
     return (
       <div>
-        <GuestListAppBar />
+        <GuestListAppBar logOut={logOut} currentCouple={currentCouple} />
         <GuestTable />
       </div>
     )

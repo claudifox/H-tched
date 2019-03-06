@@ -101,7 +101,7 @@ class GuestListAppBar extends React.Component {
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
-    const { classes } = this.props;
+    const { classes, logOut, currentCouple } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const renderMenu = (
       <Menu
@@ -119,7 +119,9 @@ class GuestListAppBar extends React.Component {
           component={Link} to="/registry"
           onClick={() => {this.handleMenuClose()}}>Our Wedding Registry</MenuItem>
 
-        <MenuItem onClick={this.handleMenuClose}>Log Out</MenuItem>
+          <MenuItem
+            component={Link} to="/"
+            onClick={() => {logOut(currentCouple)}}>Log Out</MenuItem>
       </Menu>
     );
 

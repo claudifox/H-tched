@@ -13,7 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import HomeLogInAppBar from './HomeLogInAppBar'
-import Flowers from '../images/Flowers.jpeg'
+import API from '../API.js'
 
 const styles = theme => ({
   main: {
@@ -51,8 +51,34 @@ const styles = theme => ({
 
 class CoupleSignIn extends React.Component {
 
+  state = {
+    email_address: "",
+    password: ""
+  }
+
+  handleLogInSubmit = event => {
+    event.preventDefault()
+    const { logIn, history } = this.props
+    const couple = this.state
+    API.login(couple).then(data => {
+      if (data.error) {
+        alert('Email address/password invalid')
+      } else {
+        logIn(data)
+        history.push("/items")
+      }
+    })
+  }
+
+  handleChange = event => {
+    this.setState({[event.target.name]: event.target.value})
+  }
+
   render() {
     const { classes } = this.props;
+    const { email_address, password } = this.state
+    const {handleLogInSubmit, handleChange} = this
+
     return (
       <div className='home-next-background'>
         <HomeLogInAppBar />
@@ -65,14 +91,14 @@ class CoupleSignIn extends React.Component {
         <Typography component="h1" variant="h5">
           Log In
         </Typography>
-        <form className={classes.form} onSubmit={this.props.handleLogInSubmit}>
+        <form className={classes.form} onSubmit={handleLogInSubmit}>
           <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Email Address</InputLabel>
-            <Input id="email" name="email" autoComplete="email" autoFocus />
+            <InputLabel htmlFor="email_address">Email Address</InputLabel>
+            <Input id="email_address" name="email_address" value={email_address} onChange={handleChange} autoComplete="email_address" autoFocus />
           </FormControl>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="password">Password</InputLabel>
-            <Input name="password" type="password" id="password" autoComplete="current-password" />
+            <Input name="password" type="password" value={password} onChange={handleChange} id="password" autoComplete="current-password" />
           </FormControl>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -84,6 +110,7 @@ class CoupleSignIn extends React.Component {
             variant="contained"
             color="primary"
             className={classes.submit}
+
           >
             Log In
           </Button>

@@ -16,21 +16,14 @@ import CoupleSignIn from './components/CoupleSignIn'
 import CoupleSignUp from './components/CoupleSignUp'
 import GuestLogIn from './components/GuestLogIn'
 import Home from './components/Home'
+import API from './API.js';
 import './App.css';
+
 
 class App extends Component {
 
-  // constructor(props){
-  //  super(props)
-  //    this.state = {
-  //      items: [],
-  //      searchTerm: "",
-  //      categories: [],
-  //      selectedCategories: []
-  //    }
-
   state = {
-    currentUser: "",
+    currentCouple: "",
     items: [],
     guests: [],
     registryItems: [],
@@ -39,10 +32,31 @@ class App extends Component {
     selectedCategories: []
   }
 
+  logIn = couple => {
+    localStorage.setItem("token", couple.token)
+    this.setState({currentCouple: couple.email_address})
+  }
+
+  logOut = couple => {
+    localStorage.removeItem("token")
+    this.setState({currentCouple: ""})
+  }
+
   componentDidMount() {
-    return fetch('http://localhost:3001/items')
-      .then(response => response.json())
-      .then(items => this.setState({items: items}, this.getCategories))
+    API.validate().then(coupleData => {
+      this.getItems()
+      if (coupleData.error) {
+        this.logOut()
+      } else {
+        this.logIn(coupleData)
+      }
+    })
+  }
+
+  getItems = () => {
+    fetch('http://localhost:3001/items')
+    .then(response => response.json())
+    .then(items => this.setState({items: items}, this.getCategories))
   }
 
   getCategories = () => {
@@ -77,6 +91,7 @@ class App extends Component {
       this.addItemToRegistry(clickedItem)
     }
   }
+
 
   addItemToRegistry = item => {
     this.setState({ registryItems: [...this.state.registryItems, item]})
@@ -118,8 +133,13 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.filteredItems()} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} {...props}/>}/>
               <Route exact path="/guests" render={(props) => <GuestList {...props} />}/>
+
               <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid registryItems={this.state.registryItems} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} {...props}/>}/>
               <Route exact path="/log-in" render={(props) => <CoupleSignIn handleLogInSubmit={this.handleLogInSubmit} {...props}/>}/>
+
+              <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid {...props}/>}/>
+              <Route exact path="/log-in" render={(props) => <CoupleSignIn logIn={this.logIn} {...props}/>}/>
+
               <Route exact path="/sign-up" component={CoupleSignUp}/>
             </Switch>
           </React.Fragment>

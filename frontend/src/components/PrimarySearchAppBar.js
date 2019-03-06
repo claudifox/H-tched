@@ -109,7 +109,7 @@ class PrimarySearchAppBar extends React.Component {
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
   };
-  // 
+  //
   // componentDidUpdate(prevProps) {
   //   // Typical usage (don't forget to compare props):
   //   if (this.props.searchTerm !== prevProps.searchTerm) {
@@ -134,7 +134,7 @@ class PrimarySearchAppBar extends React.Component {
           onClick={() => {this.handleMenuClose()}}>Guest List</MenuItem>
 
         <MenuItem onClick={this.handleMenuClose}>Our Wedding Registry</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My Account</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>Log Out</MenuItem>
       </Menu>
     );
 

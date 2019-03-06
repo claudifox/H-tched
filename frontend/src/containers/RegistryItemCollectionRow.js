@@ -24,7 +24,7 @@ function RegistryItemCollectionRow(props) {
     <React.Fragment>
       {registryItems.map(
         registryItem =>
-          <Grid item xs={4}>
+          <Grid registryItem xs={4}>
             <Paper className={classes.paper}><ItemCard key={registryItem.id} registryItem={registryItem} />
             </Paper>
           </Grid>

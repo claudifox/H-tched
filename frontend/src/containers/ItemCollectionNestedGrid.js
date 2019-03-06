@@ -19,7 +19,7 @@ const styles = theme => ({
 });
 
 function ItemCollectionNestedGrid(props) {
-  const { classes, items, categoriesToShow, handleClick, passCategories, onSearchChange, selectedCategories } = props;
+  const { classes, items, categoriesToShow, handleClick, passCategories, onSearchChange, selectedCategories, handleHeartClick } = props;
 
   return (
     <div className={classes.root}>
@@ -28,7 +28,7 @@ function ItemCollectionNestedGrid(props) {
       <br />
       <Grid container spacing={16}>
         <Grid container item xs={12} spacing={16}>
-          <ItemCollectionRow items={items} classes={classes} categoriesToShow={categoriesToShow} />
+          <ItemCollectionRow items={items} classes={classes} categoriesToShow={categoriesToShow} handleHeartClick={handleHeartClick} />
         </ Grid>
       </ Grid>
     </div>

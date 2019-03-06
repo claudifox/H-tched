@@ -17,7 +17,7 @@ const styles = theme => ({
 });
 
 const ItemCollectionRow = (props) => {
-  const { classes, items, categoriesToShow } = props;
+  const { classes, items, categoriesToShow, handleHeartClick } = props;
   const categoryItems = categoriesToShow.length ? items.filter((item) => props.categoriesToShow.includes(item.category)) : items
 // Have a look into doing the Grid item responsive, on half a big screen have it set at 4, otherwise full screen have as 2
   return (
@@ -25,7 +25,7 @@ const ItemCollectionRow = (props) => {
       {categoryItems.map(
         (item) =>
           <Grid item xs={4}>
-            <Paper className={classes.paper}><ItemCard key={item.id} item={item} />
+            <Paper className={classes.paper}><ItemCard key={item.id} item={item} handleHeartClick={handleHeartClick} />
             </Paper>
           </Grid>
         )}

@@ -16,6 +16,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import HtchedLogoDark from '../images/HtchedLogoDark.png'
+import _ from 'lodash'
 
 const styles = theme => ({
   root: {
@@ -108,6 +109,13 @@ class PrimarySearchAppBar extends React.Component {
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
   };
+  // 
+  // componentDidUpdate(prevProps) {
+  //   // Typical usage (don't forget to compare props):
+  //   if (this.props.searchTerm !== prevProps.searchTerm) {
+  //     this.fetchData(this.props.searchTerm);
+  //   }
+  // }
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
@@ -143,11 +151,14 @@ class PrimarySearchAppBar extends React.Component {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search…"
+                placeholder="Search Gifts…"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
+                onChange={this.props.onSearchChange}
+                showNoResults={false}
+                value={this.props.searchTerm}
               />
             </div>
             <div className={classes.sectionDesktop}>

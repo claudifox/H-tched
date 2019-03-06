@@ -1,5 +1,5 @@
 import React from 'react'
-import ItemCollectionRow from './ItemCollectionRow'
+import RegistryItemCollectionRow from './RegistryItemCollectionRow'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -19,14 +19,14 @@ const styles = theme => ({
 });
 
 function RegistryItemCollectionNestedGrid(props) {
-  const { classes, items } = props;
+  const { classes, registryItems } = props;
 
   return (
     <div className={classes.root}>
     <PrimarySearchAppBar />
       <Grid container spacing={8}>
         <Grid container item xs={12} spacing={24}>
-          <ItemCollectionRow items={items} classes={classes} />
+          <RegistryItemCollectionRow registryItems={registryItems} classes={classes} />
         </Grid>
       </Grid>
     </div>

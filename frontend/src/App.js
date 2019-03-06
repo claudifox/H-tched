@@ -82,6 +82,26 @@ class App extends Component {
     })
   }
 
+  handleHeartClick = id => {
+    const clickedItem = this.state.items.find((item) => item.id === id)
+    console.log(clickedItem)
+    if(this.state.registryItems.find(regItem => regItem.id === clickedItem.id)){
+      this.removeItemFromRegistry(clickedItem)
+    } else{
+      this.addItemToRegistry(clickedItem)
+    }
+  }
+
+
+  addItemToRegistry = item => {
+    this.setState({ registryItems: [...this.state.registryItems, item]})
+  }
+
+  removeItemFromRegistry = item => {
+    const updatedRegistry = this.state.registryItems.filter((registeredItem) => registeredItem !== item)
+    this.setState({ registryItems: updatedRegistry })
+  }
+
   handleCategoryClick = category => {
     this.state.selectedCategories.includes(category) ? this.deSelectCategory(category) : this.selectCategory(category)
   }
@@ -96,6 +116,11 @@ class App extends Component {
      this.setState({ selectedCategories: updatedCategories })
   }
 
+  handleLogInSubmit = event => {
+    event.preventDefault()
+    debugger
+  }
+
   render() {
     return (
       <div>
@@ -106,10 +131,15 @@ class App extends Component {
           <React.Fragment>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.filteredItems()} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} {...props}/>}/>
+              <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.filteredItems()} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} {...props}/>}/>
               <Route exact path="/guests" render={(props) => <GuestList {...props} />}/>
+
+              <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid registryItems={this.state.registryItems} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} {...props}/>}/>
+              <Route exact path="/log-in" render={(props) => <CoupleSignIn handleLogInSubmit={this.handleLogInSubmit} {...props}/>}/>
+
               <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid {...props}/>}/>
               <Route exact path="/log-in" render={(props) => <CoupleSignIn logIn={this.logIn} {...props}/>}/>
+
               <Route exact path="/sign-up" component={CoupleSignUp}/>
             </Switch>
           </React.Fragment>

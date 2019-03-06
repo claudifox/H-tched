@@ -4,9 +4,9 @@ class ApplicationController < ActionController::API
     JWT.encode(data, secret)
   end
 
-  def get_current_couple_registry
+  def get_current_couple
     id = decoded_token['id']
-    CoupleRegistry.find_by(id: id)
+    Couple.find_by(id: id)
   end
 
   def decoded_token

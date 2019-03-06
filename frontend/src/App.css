@@ -50,4 +50,6 @@ body {
   background-position: center top 200px;
   height: 100%;
 
+  background-blend-mode: lighten;
+
 }

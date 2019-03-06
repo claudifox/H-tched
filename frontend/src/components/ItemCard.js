@@ -76,7 +76,6 @@ class ItemCard extends React.Component {
         <CardContent>
           <Typography component="p">
             £{this.props.item.price}
-
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>

@@ -89,7 +89,7 @@ class CoupleSignIn extends React.Component {
           </Button>
           </form>
           </Paper>
-          <div  style={{height: 80 }}/>
+          <div  style={{height: 250 }}/>
         </main>
       </div>
     )

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -121,11 +121,11 @@ class PrimarySearchAppBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={() => {
-          this.handleMenuClose()
-          this.props.history.push("")
-        }}>Guest List</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>Wedding Registry</MenuItem>
+        <MenuItem
+          component={Link} to="/guests"
+          onClick={() => {this.handleMenuClose()}}>Guest List</MenuItem>
+
+        <MenuItem onClick={this.handleMenuClose}>Our Wedding Registry</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>My Account</MenuItem>
       </Menu>
     );

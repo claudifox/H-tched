@@ -6,6 +6,23 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Item.delete_all
+Couple.delete_all
+
+Couple.create(
+  [{
+    name_1: "Andy",
+    name_2: "Laura",
+    email_address: "andypurbrick@gmail.com",
+    password: "kitten"
+    },
+    {
+      name_1: "Kev",
+      name_2: "Laura",
+      email_address: "kevsutton@gmail.com",
+      password: "puppy"
+      }
+    ]
+)
 
 Item.create(
   [

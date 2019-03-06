@@ -60,7 +60,7 @@ class ItemCard extends React.Component {
 
 
   render() {
-    const { classes } = this.props;
+    const { classes, handleHeartClick } = this.props;
 
     return (
       <Card className={classes.card} key={this.props.item.id}>
@@ -80,7 +80,7 @@ class ItemCard extends React.Component {
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
+            <FavoriteIcon onClick={()=> handleHeartClick(this.props.item.id)} />
           </IconButton>
           <IconButton aria-label="Share">
             <ShareIcon />

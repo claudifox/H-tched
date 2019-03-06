@@ -19,12 +19,12 @@ const styles = theme => ({
 });
 
 function ItemCollectionNestedGrid(props) {
-  const { classes, items, categoriesToShow, handleClick, passCategories, onSearchChange } = props;
+  const { classes, items, categoriesToShow, handleClick, passCategories, onSearchChange, selectedCategories } = props;
 
   return (
     <div className={classes.root}>
       <PrimarySearchAppBar onSearchChange={onSearchChange}/>
-      <CategorySelectorChips handleClick={handleClick} passCategories={passCategories} items={items}/>
+      <CategorySelectorChips handleClick={handleClick} passCategories={passCategories} items={items} selectedCategories={selectedCategories}/>
       <br />
       <Grid container spacing={16}>
         <Grid container item xs={12} spacing={16}>

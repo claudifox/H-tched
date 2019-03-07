@@ -79,7 +79,7 @@ const styles = theme => ({
 });
 
 
-class PrimarySearchAppBar extends React.Component {
+class RegistrySearchAppBar extends React.Component {
   state = {
     anchorEl: null,
   };
@@ -105,9 +105,10 @@ class PrimarySearchAppBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
+
       <MenuItem
-      component={Link} to="/registry"
-      onClick={() => {this.handleMenuClose()}}>Our Wedding Registry</MenuItem>
+        component={Link} to="/items"
+        onClick={() => {this.handleMenuClose()}}>All Items</MenuItem>
 
         <MenuItem
           component={Link} to="/guests"
@@ -138,7 +139,7 @@ class PrimarySearchAppBar extends React.Component {
                   input: classes.inputInput,
                 }}
                 onChange={this.props.onSearchChange}
-                shownoresults="false"
+                showNoResults={false}
                 value={this.props.searchTerm}
               />
             </div>
@@ -160,8 +161,8 @@ class PrimarySearchAppBar extends React.Component {
   }
 }
 
-PrimarySearchAppBar.propTypes = {
+RegistrySearchAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PrimarySearchAppBar);
+export default withStyles(styles)(RegistrySearchAppBar);

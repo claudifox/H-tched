@@ -40,11 +40,11 @@ class App extends Component {
   componentDidMount() {
     API.validate().then(coupleData => {
       this.getItems()
+      // this.getRegistryItems()
       if (coupleData.error) {
         this.logOut()
       } else {
         this.logIn(coupleData)
-        this.getRegistryItems()
       }
     })
   }
@@ -53,6 +53,7 @@ class App extends Component {
     fetch(`http://localhost:3001/couples/${this.state.currentCouple.couple_id}/items`)
     .then(response => response.json())
     .then(items => this.setState({items: items}, this.getCategories))
+    .then(this.getRegistryItems)
   }
 
 
@@ -87,17 +88,17 @@ class App extends Component {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({item_id: item.id})
-    }).then(console.log("Added")).then(response => response.json()).then(item =>{
-      const itemID = item.item_id
-      const newItem = this.state.items.find(item =>  item.id === itemID)
-      this.setState({registryItems: this.state.registryItems.concat(newItem)})
-    })
+    }).then(console.log("Added"))
   }
 
   getRegistryItems = () => {
     fetch(`http://localhost:3001/couples/${this.state.currentCouple.couple_id}/registry`)
     .then(response => response.json())
-    .then(registryItems => this.setState({registryItems: registryItems}))
+    .then(registryItems => registryItems.map(registryItem => {
+      const registryItemId = registryItem.item_id
+      const registryItemObject = this.state.items.find(item => item.id === registryItemId)
+      this.setState({registryItems: [...this.state.registryItems, registryItemObject]})
+    }))
   }
 
 

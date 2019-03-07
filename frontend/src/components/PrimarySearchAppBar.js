@@ -1,23 +1,18 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MoreIcon from '@material-ui/icons/MoreVert';
 import HtchedLogoDark from '../images/HtchedLogoDark.png'
-import ItemCollectionNestedGrid from '../containers/ItemCollectionNestedGrid'
-import _ from 'lodash'
 
 const styles = theme => ({
   root: {
@@ -87,7 +82,6 @@ const styles = theme => ({
 class PrimarySearchAppBar extends React.Component {
   state = {
     anchorEl: null,
-    mobileMoreAnchorEl: null,
   };
 
   handleProfileMenuOpen = event => {
@@ -100,7 +94,7 @@ class PrimarySearchAppBar extends React.Component {
 
 
   render() {
-    const { anchorEl, mobileMoreAnchorEl } = this.state;
+    const { anchorEl } = this.state;
     const { classes, logOut, currentCouple } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const renderMenu = (
@@ -130,9 +124,7 @@ class PrimarySearchAppBar extends React.Component {
         <AppBar position="static" style={{ backgroundColor: '#B84C65' }}>
           <Toolbar>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              <Link onClick to={ItemCollectionNestedGrid}>
-                <img src={HtchedLogoDark}  style={{width: '200px'}}/>
-              </Link>
+                <img src={HtchedLogoDark} alt="logo-dark" style={{width: '200px'}} />
             </Typography>
             <div className={classes.grow} />
             <div className={classes.search}>

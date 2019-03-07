@@ -1,12 +1,10 @@
 import React from 'react'
 import CoupleSignIn from './CoupleSignIn'
 import CoupleSignUp from './CoupleSignUp'
-import GuestLogIn from './GuestLogIn'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
-import HtchedLogoLight from '../images/HtchedLogoLight.png'
 import { Link } from 'react-router-dom'
 import HomeLogInAppBar from './HomeLogInAppBar'
 

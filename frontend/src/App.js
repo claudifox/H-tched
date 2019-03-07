@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline'
-import PrimarySearchAppBar from './components/PrimarySearchAppBar'
-import CategorySelectorChips from './containers/CategorySelectorChips'
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch,
-  Redirect
 } from 'react-router-dom'
 import ItemCollectionNestedGrid from './containers/ItemCollectionNestedGrid'
 import RegistryItemCollectionNestedGrid from './containers/RegistryItemCollectionNestedGrid'
 import GuestList from './containers/GuestList'
 import CoupleSignIn from './components/CoupleSignIn'
 import CoupleSignUp from './components/CoupleSignUp'
-import GuestLogIn from './components/GuestLogIn'
 import Home from './components/Home'
 import API from './API.js';
 import './App.css';
@@ -128,8 +123,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.filteredItems()} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} logOut={this.logOut} currentCouple={this.state.currentCouple}{...props}/>}/>
-              <Route exact path="/guests" render={(props) => <GuestList logOut={this.logOut} currentCouple={this.state.currentCouple}{...props} />}/>
-              <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid registryItems={this.state.registryItems} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} {...props}/>}/>
+              <Route exact path="/guests" render={(props) => <GuestList logOut={this.logOut} currentCouple={this.state.currentCouple} {...props} />}/>
+              <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid registryItems={this.state.registryItems} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} logOut={this.logOut} currentCouple={this.state.currentCouple} {...props}/>}/>
               <Route exact path="/log-in" render={(props) => <CoupleSignIn logIn={this.logIn} {...props}/>}/>
               <Route exact path="/sign-up" component={CoupleSignUp}/>
             </Switch>

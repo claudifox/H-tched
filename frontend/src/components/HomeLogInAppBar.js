@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import HtchedLogoLight from '../images/HtchedLogoLight.png'
 import Home from './Home'
 import { Link } from 'react-router-dom'
@@ -29,7 +28,7 @@ function HomeLogInAppBar(props) {
         <Toolbar>
         <div className={classes.grow} />
         <Link onClick to={Home}>
-          <img src={HtchedLogoLight} style={{height: 105 }} />
+          <img src={HtchedLogoLight} alt="light-logo" style={{height: 105 }} />
         </Link>
         </Toolbar>
       </AppBar>

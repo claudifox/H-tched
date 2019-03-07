@@ -8,7 +8,7 @@ class CouplesController < ApplicationController
   def login
     @couple = Couple.find_by(email_address: params[:email_address])
     if @couple && @couple.authenticate(params[:password])
-      render json: {email_address: @couple.email_address, token: issue_token({id: @couple.id})}
+      render json: {email_address: @couple.email_address, token: issue_token({id: @couple.id}), couple_id: @couple.id}
     else
       render json: {error: "Your email address or password is incorrect"}, status: 401
     end
@@ -17,7 +17,7 @@ class CouplesController < ApplicationController
   def validate
     @couple = get_current_couple
     if @couple
-      render json: {email_address: @couple.email_address, token: issue_token({id: @couple.id})}
+      render json: {email_address: @couple.email_address, token: issue_token({id: @couple.id}), couple_id: @couple.id}
     else
       render json: {error: "Your email address or password is incorrect"}, status: 401
     end

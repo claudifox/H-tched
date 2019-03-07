@@ -24,7 +24,7 @@ const ItemCollectionRow = (props) => {
     <React.Fragment>
       {categoryItems.map(
         (item) =>
-          <Grid item xs={4}>
+          <Grid item xs={2}>
             <Paper className={classes.paper}><ItemCard key={item.id} item={item} handleClick={handleHeartClick} />
             </Paper>
           </Grid>

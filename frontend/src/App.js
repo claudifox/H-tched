@@ -18,7 +18,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    currentCouple: "",
+    currentCouple: {},
     items: [],
     guests: [],
     registryItems: [],
@@ -44,15 +44,17 @@ class App extends Component {
         this.logOut()
       } else {
         this.logIn(coupleData)
+        this.getRegistryItems()
       }
     })
   }
 
   getItems = () => {
-    fetch(`http://localhost:3001/couples/${this.state.currentCouple.id}/items`)
+    fetch(`http://localhost:3001/couples/${this.state.currentCouple.couple_id}/items`)
     .then(response => response.json())
     .then(items => this.setState({items: items}, this.getCategories))
   }
+
 
   getCategories = () => {
   	const itemCats = this.state.items.map((item) => item.category)
@@ -78,17 +80,22 @@ class App extends Component {
   }
 
   addRegistryItemsToDatabase = item => {
-    return fetch(`http://localhost:3001/couples/${this.state.currentCouple.id}/registry`, {
+
+    return fetch(`http://localhost:3001/couples/${this.state.currentCouple.couple_id}/registry`, {
       method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(item)
-    }).then(response => response.json())
+          body: JSON.stringify({item_id: item.id})
+    }).then(console.log("Added")).then(response => response.json()).then(item =>{
+      const itemID = item.item_id
+      const newItem = this.state.items.find(item =>  item.id === itemID)
+      this.setState({registryItems: this.state.registryItems.concat(newItem)})
+    })
   }
 
   getRegistryItems = () => {
-    fetch(`http://localhost:3001/couples/${this.state.currentCouple.id}/registry`)
+    fetch(`http://localhost:3001/couples/${this.state.currentCouple.couple_id}/registry`)
     .then(response => response.json())
     .then(registryItems => this.setState({registryItems: registryItems}))
   }
@@ -133,7 +140,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.filteredItems()} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} handleRemoveHeartClick={this.handleRemoveHeartClick} logOut={this.logOut} currentCouple={this.state.currentCouple} {...props}/>}/>
               <Route exact path="/guests" render={(props) => <GuestList logOut={this.logOut} currentCouple={this.state.currentCouple} {...props} />}/>
-              <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid registryItems={this.state.registryItems} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleRemoveHeartClick={this.handleRemoveHeartClick} logOut={this.logOut} currentCouple={this.state.currentCouple} {...props}/>}/>
+              <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid registryItems={this.state.registryItems} handleRemoveHeartClick={this.handleRemoveHeartClick} logOut={this.logOut} currentCouple={this.state.currentCouple} {...props}/>}/>
               <Route exact path="/log-in" render={(props) => <CoupleSignIn logIn={this.logIn} {...props}/>}/>
               <Route exact path="/sign-up" component={CoupleSignUp}/>
             </Switch>

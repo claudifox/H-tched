@@ -59,7 +59,6 @@ class ItemCard extends React.Component {
 
   render() {
     const { classes, handleClick, item } = this.props;
-
     return (
       <Card className={classes.card} key={item.id}>
         <CardHeader

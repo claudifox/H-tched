@@ -70,7 +70,7 @@ class CoupleSignUp extends React.Component {
       if (data.error) {
         alert('Email address already in use')
       } else {
-        logIn(data)
+        // logIn(data)
         history.push("/")
       }
     })

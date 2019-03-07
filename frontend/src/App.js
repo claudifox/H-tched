@@ -128,8 +128,8 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.filteredItems()} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} logOut={this.logOut} currentCouple={this.state.currentCouple}{...props}/>}/>
-              <Route exact path="/guests" render={(props) => <GuestList logOut={this.logOut} currentCouple={this.state.currentCouple} {...props} />}/>
-              <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid registryItems={this.state.registryItems} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} logOut={this.logOut} currentCouple={this.state.currentCouple} {...props}/>}/>
+              <Route exact path="/guests" render={(props) => <GuestList logOut={this.logOut} currentCouple={this.state.currentCouple}{...props} />}/>
+              <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid registryItems={this.state.registryItems} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} {...props}/>}/>
               <Route exact path="/log-in" render={(props) => <CoupleSignIn logIn={this.logIn} {...props}/>}/>
               <Route exact path="/sign-up" component={CoupleSignUp}/>
             </Switch>

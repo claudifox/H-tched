@@ -26,7 +26,7 @@ class CouplesController < ApplicationController
   def get_registry
     @couple = get_current_couple
     if @couple
-      render json: @couple.items
+      render json: @couple.registry
     else
       render json: {error: "Not a valid couple"}, status: 401
     end

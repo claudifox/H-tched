@@ -58,26 +58,26 @@ class ItemCard extends React.Component {
 
 
   render() {
-    const { classes, handleHeartClick } = this.props;
+    const { classes, handleClick, item } = this.props;
 
     return (
-      <Card className={classes.card} key={this.props.item.id}>
+      <Card className={classes.card} key={item.id}>
         <CardHeader
-          title={this.props.item.title}
-          subheader={this.props.item.category}
+          title={item.title}
+          subheader={item.category}
         />
         <CardMedia
           className={classes.media}
-          image={this.props.item.image}
+          image={item.image}
           title="item image"
         />
         <CardContent>
           <Typography component="p">
-            £{this.props.item.price}
+            £{item.price}
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites" onClick={()=> handleHeartClick(this.props.item.id)}>
+          <IconButton aria-label="Add to favorites" onClick={(event) => handleClick(item)} >
             <FavoriteIcon  />
           </IconButton>
           <IconButton aria-label="Share">
@@ -97,7 +97,7 @@ class ItemCard extends React.Component {
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>
-              {this.props.item.description}
+              {item.description}
             </Typography>
           </CardContent>
         </Collapse>

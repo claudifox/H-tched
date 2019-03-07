@@ -29,7 +29,7 @@ class App extends Component {
 
   logIn = couple => {
     localStorage.setItem("token", couple.token)
-    this.setState({currentCouple: couple.email_address})
+    this.setState({currentCouple: couple})
   }
 
   logOut = couple => {
@@ -49,7 +49,7 @@ class App extends Component {
   }
 
   getItems = () => {
-    fetch('http://localhost:3001/items')
+    fetch(`http://localhost:3001/couples/${this.state.currentCouple.id}/items`)
     .then(response => response.json())
     .then(items => this.setState({items: items}, this.getCategories))
   }
@@ -77,24 +77,34 @@ class App extends Component {
     })
   }
 
-  handleHeartClick = id => {
-    const clickedItem = this.state.items.find((item) => item.id === id)
-    console.log(clickedItem)
-    if(this.state.registryItems.find(regItem => regItem.id === clickedItem.id)){
-      this.removeItemFromRegistry(clickedItem)
-    } else{
-      this.addItemToRegistry(clickedItem)
+  addRegistryItemsToDatabase = item => {
+    return fetch(`http://localhost:3001/couples/${this.state.currentCouple.id}/registry`, {
+      method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(item)
+    }).then(response => response.json())
+  }
+
+  getRegistryItems = () => {
+    fetch(`http://localhost:3001/couples/${this.state.currentCouple.id}/registry`)
+    .then(response => response.json())
+    .then(registryItems => this.setState({registryItems: registryItems}))
+  }
+
+
+  handleHeartClick = item => {
+    if(this.state.registryItems.includes(item)){
+      return alert("This item is already in your registry")
+    } else {
+      this.addRegistryItemsToDatabase(item)
     }
   }
 
-
-  addItemToRegistry = item => {
-    this.setState({ registryItems: [...this.state.registryItems, item]})
-  }
-
-  removeItemFromRegistry = item => {
-    const updatedRegistry = this.state.registryItems.filter((registeredItem) => registeredItem !== item)
-    this.setState({ registryItems: updatedRegistry })
+  handleRemoveHeartClick = item => {
+    const updatedRegistryItems = this.state.registryItems.filter(item => item !== item)
+    this.setState({registryItems: updatedRegistryItems})
   }
 
   handleCategoryClick = category => {
@@ -103,7 +113,6 @@ class App extends Component {
 
   selectCategory = category => {
    this.setState({ selectedCategories: [...this.state.selectedCategories, category]})
-
   }
 
   deSelectCategory = category => {
@@ -122,9 +131,9 @@ class App extends Component {
           <React.Fragment>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.filteredItems()} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} logOut={this.logOut} currentCouple={this.state.currentCouple}{...props}/>}/>
+              <Route exact path="/items" render={(props) => <ItemCollectionNestedGrid items={this.filteredItems()} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} handleRemoveHeartClick={this.handleRemoveHeartClick} logOut={this.logOut} currentCouple={this.state.currentCouple} {...props}/>}/>
               <Route exact path="/guests" render={(props) => <GuestList logOut={this.logOut} currentCouple={this.state.currentCouple} {...props} />}/>
-              <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid registryItems={this.state.registryItems} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleHeartClick={this.handleHeartClick} logOut={this.logOut} currentCouple={this.state.currentCouple} {...props}/>}/>
+              <Route exact path="/registry" render={(props) => <RegistryItemCollectionNestedGrid registryItems={this.state.registryItems} categoriesToShow={this.state.selectedCategories} onSearchChange={this.onSearchChange} handleClick={this.handleCategoryClick} passCategories={this.state.categories} selectedCategories={this.state.selectedCategories} handleRemoveHeartClick={this.handleRemoveHeartClick} logOut={this.logOut} currentCouple={this.state.currentCouple} {...props}/>}/>
               <Route exact path="/log-in" render={(props) => <CoupleSignIn logIn={this.logIn} {...props}/>}/>
               <Route exact path="/sign-up" component={CoupleSignUp}/>
             </Switch>

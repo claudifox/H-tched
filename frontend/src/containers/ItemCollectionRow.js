@@ -25,7 +25,7 @@ const ItemCollectionRow = (props) => {
       {categoryItems.map(
         (item) =>
           <Grid item xs={4}>
-            <Paper className={classes.paper}><ItemCard key={item.id} item={item} handleHeartClick={handleHeartClick} />
+            <Paper className={classes.paper}><ItemCard key={item.id} item={item} handleClick={handleHeartClick} />
             </Paper>
           </Grid>
         )}

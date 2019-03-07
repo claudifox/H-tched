@@ -27,7 +27,7 @@ function ItemCollectionNestedGrid(props) {
       <br />
       <Grid container spacing={16}>
         <Grid container item xs={12} spacing={16}>
-          <ItemCollectionRow items={items} classes={classes} categoriesToShow={categoriesToShow} handleHeartClick={handleHeartClick} />
+          <ItemCollectionRow items={items} classes={classes} categoriesToShow={categoriesToShow} handleHeartClick={handleHeartClick}  />
         </ Grid>
       </ Grid>
     </div>

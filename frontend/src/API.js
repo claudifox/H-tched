@@ -25,16 +25,16 @@ class API {
     return this.get(baseUrl + "validate");
   }
 
-  static getGuests() {
-    return this.get(baseUrl + "guests");
+  static getGuests(couple) {
+    return this.get(baseUrl + `/couples/${couple.id}/guests`);
   }
 
-  static getRegistry() {
-    return this.get(baseUrl + "registry");
+  static getRegistry(couple) {
+    return this.get(baseUrl + `/couples/${couple.id}/registry`);
   }
 
-  static getItems() {
-    return this.get(baseUrl + "items");
+  static getItems(couple) {
+    return this.get(baseUrl + `/couples/${couple.id}/items`);
   }
 
   static get(url) {

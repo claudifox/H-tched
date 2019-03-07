@@ -17,7 +17,7 @@ const styles = theme => ({
 });
 
 function RegistryItemCollectionRow(props) {
-  const { classes, registryItems } = props;
+  const { classes, registryItems, handleRemoveHeartClick } = props;
 
 // Have a look into doing the Grid item responsive, on half a big screen have it set at 4, otherwise full screen have as 2
   return (
@@ -25,7 +25,7 @@ function RegistryItemCollectionRow(props) {
       {registryItems.map(
         registryItem =>
           <Grid registryItem xs={4}>
-            <Paper className={classes.paper}><ItemCard key={registryItem.id} registryItem={registryItem} />
+            <Paper className={classes.paper}><ItemCard key={registryItem.id} registryItem={registryItem} handleClick={handleRemoveHeartClick} />
             </Paper>
           </Grid>
         )}

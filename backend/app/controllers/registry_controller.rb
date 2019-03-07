@@ -1,4 +1,4 @@
-class RegistriesController < ApplicationController
+class RegistryController < ApplicationController
 
   def index
     @registries = Registry.all

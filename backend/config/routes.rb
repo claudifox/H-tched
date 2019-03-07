@@ -11,5 +11,4 @@ Rails.application.routes.draw do
   post 'login', to: 'couples#login'
   get 'validate', to: 'couples#validate'
 
-
 end

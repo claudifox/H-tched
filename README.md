@@ -6,7 +6,7 @@ We created a wedding registry app which allows the user to search thorugh specia
 
 H!tched was built by Claudia ([claudifox](https://github.com/claudifox)) and Sunny ([sunny2831](https://github.com/sunny2831)).
 
-## MVP ❣️
+## MVP❣️
 
 We wanted our app to fulfill the following: 
 1. A couple should be able to sign up, log in and log out. ✅

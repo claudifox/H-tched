@@ -1,12 +1,12 @@
 # H!tched 💍
 
-Together, we created a wedding registry app which allows the user to search thorugh specially selected products, add the items to their registry, and create their guestlist all in one place. We utilized JSON Web Tokens to allow for different users to sign up and log in and out. 
+We created a wedding registry app which allows the user to search thorugh specially selected products, add the items to their registry, and create their guestlist all in one place. We utilized JSON Web Tokens to allow for different users to sign up and log in and out. 
 
 ## About Us 
 
 H!tched was built by Claudia ([claudifox](https://github.com/claudifox)) and Sunny ([sunny2831](https://github.com/sunny2831)).
 
-## MVP
+## MVP ❣️
 
 We wanted our app to fulfill the following: 
 1. A couple should be able to sign up, log in and log out. ✅
@@ -14,14 +14,14 @@ We wanted our app to fulfill the following:
 3. A couple should be able to search by name. ✅
 4. A couple should be able to add said products to their individual registry. ✅
 
-## Stretch Goals 
+## Stretch Goals 🎁🎁
 
 In order to further our app, we wanted to: 
 1. Allow a couple to search by product category. ✅
 2. For their registry to persist on the database. ✅
 3. Implement Material UI styling components to make the app UI friendly. ✅
 
-## Super Stretch Goals 
+## Super Stretch Goals 💌💌💌
 
 We also asigned super stretch goals if we got the time towards to end of the project or to complete after submission:
 1. A couple is able to fill in a form to add their guests to the app.

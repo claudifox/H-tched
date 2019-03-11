@@ -1,6 +1,6 @@
 # H!tched 💍
 
-We created a wedding registry app which allows the user to search thorugh specially selected products, add the items to their registry, and create their guestlist all in one place. We utilized JSON Web Tokens to allow for different users to sign up and log in and out. 
+We created a wedding registry app which allows the user to search through specially selected products, add the items to their registry, and create their guestlist all in one place. We utilized JSON Web Tokens to allow for different users to sign up and log in and out. 
 
 ## About Us 
 
